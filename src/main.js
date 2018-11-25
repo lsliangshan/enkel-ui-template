@@ -4,11 +4,19 @@ import Vue from 'vue'
 import App from './App'
 // import axios from 'axios'
 // import qs from 'qs'
+import 'babel-polyfill'
 import { sync } from 'vuex-router-sync'
 import router from './router/index'
 import store from './store'
 import * as filters from './filters'
 import mixins from './mixins'
+
+import * as enkel from '../../enkel-ui/dist/enkel'
+import locale from '../../enkel-ui/src/locale/lang/zh-CN'
+
+Vue.use(enkel, {
+  locale
+})
 
 Vue.config.productionTip = false
 
@@ -31,7 +39,7 @@ router.beforeEach(async (to, from, next) => {
   next()
 })
 
-router.afterEach(to => {})
+router.afterEach(to => { })
 
 Vue.prototype.errorHandler = (err, vm) => {
   console.log(err.message)
